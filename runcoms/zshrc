@@ -12,3 +12,17 @@ fi
 
 # Customize to your needs...
 
+export EDITOR="emacs -nw"
+export VISUAL=$EDITOR
+
+#############################################
+### OSX
+if [[ $(uname) -eq "Darwin" ]]; then
+    if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.osx.zsh" ]]; then
+	source "${ZDOTDIR:-$HOME}/.zprezto/init.osx.zsh"
+    fi
+elif [[ $(uname) -eq "Linux" ]]; then
+    if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.linux.zsh" ]]; then
+	source "${ZDOTDIR:-$HOME}/.zprezto/init.linux.zsh"
+    fi
+fi
