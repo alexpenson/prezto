@@ -46,11 +46,21 @@ function fasd_cd {
 }
 
 #
+# Initialize
+#
+
+eval "$(fasd --init auto)"
+
+#
 # Aliases
 #
 
 # Changes the current working directory interactively.
 alias j='fasd_cd -i'
+
+#
+# Keybindings
+#
 
 bindkey '^X^A' fasd-complete    # C-x C-a to do fasd-complete (fils and directories)
 bindkey '^X^F' fasd-complete-f  # C-x C-f to do fasd-complete-f (only files)
