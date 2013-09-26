@@ -5,11 +5,6 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
-# Source Prezto.
-if [[ -s "$HOME/.zprezto/init.zsh" ]]; then
-  source "$HOME/.zprezto/init.zsh"
-fi
-
 # Customize to your needs...
 
 export EDITOR="emacs -nw"
@@ -25,4 +20,9 @@ elif [[ $(uname) == "Linux" ]]; then
     if [[ -s "$HOME/.zprezto/init.linux.zsh" ]]; then
 	source "$HOME/.zprezto/init.linux.zsh"
     fi
+fi
+
+# Source Prezto.
+if [[ -s "$HOME/.zprezto/init.zsh" ]]; then
+  source "$HOME/.zprezto/init.zsh"
 fi

@@ -51,6 +51,9 @@ export SNPSIFT="-jar $SNPEFF_HOME/SnpSift.jar"
 PATH=/nfs/apps/gcc/4.6.0/bin:$PATH
 export LD_LIBRARY_PATH=/nfs/apps/gcc/4.6.0/lib64:$LD_LIBRARY_PATH
 
+### FASD
+PATH=$PATH:/ifs/scratch/c2b2/rr_lab/shares/fasd_clvv
+
 ### GIT
 PATH=/ifs/scratch/c2b2/rr_lab/shares/git:$PATH
 

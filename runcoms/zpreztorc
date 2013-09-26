@@ -36,7 +36,8 @@ zstyle ':prezto:load' pmodule \
   'screen' \
   'syntax-highlighting' \
   'git' \
-  'osx'
+  'osx' \
+  'fasd'
 
 #
 # Editor
