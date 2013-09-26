@@ -1,4 +1,3 @@
-echo "Linux"
 #############################################
 ### SETUP
 # shopt -s autocd checkjobs 

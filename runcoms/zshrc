@@ -17,11 +17,11 @@ export VISUAL=$EDITOR
 
 #############################################
 ### OSX
-if [[ $(uname) -eq "Darwin" ]]; then
+if [[ $(uname) == "Darwin" ]]; then
     if [[ -s "$HOME/.zprezto/init.osx.zsh" ]]; then
 	source "$HOME/.zprezto/init.osx.zsh"
     fi
-elif [[ $(uname) -eq "Linux" ]]; then
+elif [[ $(uname) == "Linux" ]]; then
     if [[ -s "$HOME/.zprezto/init.linux.zsh" ]]; then
 	source "$HOME/.zprezto/init.linux.zsh"
     fi
