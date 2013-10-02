@@ -291,7 +291,7 @@ function rt {
     mail -s "$1" rt@c2b2.columbia.edu
 }
 function qm {
-    qalter -m ea ${*-$jid}
+    qalter -m ea ${*:-$jid}
 }
 alias qsdel='cut -c1-7 | xargs qdel'
 alias qsj='cut -c1-7 | xargs -I{} qstat -j {}'
