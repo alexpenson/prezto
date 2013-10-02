@@ -281,7 +281,7 @@ for keymap in 'emacs' 'viins'; do
   bindkey -M "$keymap" "$key_info[BackTab]" reverse-menu-complete
 
   # Complete in the middle of word.
-  bindkey -M "$keymap" "$key_info[Control]I" expand-or-complete
+  bindkey -M "$keymap" "$key_info[Control]I" expand-or-complete-prefix
 
   # Expand .... to ../..
   if zstyle -t ':prezto:module:editor' dot-expansion; then
