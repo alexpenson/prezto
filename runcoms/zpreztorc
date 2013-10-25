@@ -37,7 +37,8 @@ zstyle ':prezto:load' pmodule \
   'syntax-highlighting' \
   'git' \
   'osx' \
-  'fasd'
+  'fasd' \
+  'bio'
 
 #
 # Editor
