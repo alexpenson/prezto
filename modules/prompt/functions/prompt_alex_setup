@@ -75,8 +75,10 @@ function prompt_alex_setup {
   if [[ $(uname) == "Darwin" ]]; then
       if [[ $(scutil --get ComputerName) == "Alex-Macbook" ]]; then 
 	  PROMPT='%F{blue}❯%f%b '
-      else
+      elif [[ $(scutil --get ComputerName) == "c2b2rrmd4" ]]; then
 	  PROMPT='%F{red}❯%f%b '
+      else
+	  PROMPT='%F{white}❯%f%b '
       fi
   elif [[ $(uname) == "Linux" ]]; then
       if [[ $(hostname) == login* ]]; then 
