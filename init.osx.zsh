@@ -22,6 +22,8 @@ function l {
     sed ':x s/\(^\|\t\)\t/\1 \t/; t x' | column -t -s $'\t' | less -S 
 }
 
+export PATH=$PATH:~/work/fasd
+
 export R_HISTFILE=~/.Rhistory
 
 unset LD_LIBRARY_PATH
