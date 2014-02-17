@@ -43,7 +43,7 @@ export TMP=$scratch/tmp
 export TMPDIR=$scratch/tmp
 
 ### SNPEFF
-export SNPEFF_HOME=/ifs/scratch/c2b2/rr_lab/shares/snpEff-v3.3
+export SNPEFF_HOME=/ifs/scratch/c2b2/rr_lab/shares/snpEff-v3.4
 export SNPEFF="-jar $SNPEFF_HOME/snpEff.jar -c $SNPEFF_HOME/snpEff.config"
 export SNPSIFT="-jar $SNPEFF_HOME/SnpSift.jar"
 
@@ -55,7 +55,7 @@ export LD_LIBRARY_PATH=/nfs/apps/gcc/4.6.0/lib64:$LD_LIBRARY_PATH
 PATH=$PATH:/ifs/scratch/c2b2/rr_lab/shares/fasd_clvv
 
 ### GIT
-PATH=/ifs/scratch/c2b2/rr_lab/shares/git:$PATH
+#PATH=/ifs/scratch/c2b2/rr_lab/shares/git:$PATH
 
 ### AWK
 PATH=$sshares/bioawk:$PATH
@@ -80,15 +80,17 @@ export PERL5LIB
 
 PATH=$PATH:$sshares/ncdu
 ### PYTHON
-PATH=/ifs/scratch/c2b2/rr_lab/shares/python/bin:$PATH
-#PATH=/nfs/apps/python/2.6.5/bin:$PATH
-#LD_LIBRARY_PATH=/nfs/apps/python/2.6.5/lib:$LD_LIBRARY_PATH
-LD_LIBRARY_PATH=/ifs/scratch/c2b2/rr_lab/shares/python/lib:$LD_LIBRARY_PATH
+PYTHON_DIR=/ifs/home/c2b2/rr_lab/avp2106/anaconda
+#PYTHON_DIR=/ifs/scratch/c2b2/rr_lab/shares/python
+#PYTHON_DIR=/nfs/apps/python/2.7.2
+PATH=$PYTHON_DIR/bin:$PATH
+export LD_LIBRARY_PATH=$PYTHON_DIR/lib:$LD_LIBRARY_PATH
+export PYTHONPATH=$PYTHON_DIR/lib:$PYTHONPATH
 
 ###RSeQC
-PATH=$PATH:/ifs/scratch/c2b2/rr_lab/shares/RSeQC/bin
-export PYTHONPATH=/ifs/scratch/c2b2/rr_lab/shares/python:/ifs/scratch/c2b2/rr_lab/shares/RSeQC/lib/python2.7/site-packages:/ifs/home/c2b2/rr_lab/avp2106/.local/lib/python2.7/site-packages/$PYTHONPATH
-export PYTHONSTARTUP=~/.pystartup.py
+# PATH=$PATH:/ifs/scratch/c2b2/rr_lab/shares/RSeQC/bin
+# export PYTHONPATH=/ifs/scratch/c2b2/rr_lab/shares/RSeQC/lib/python2.7/site-packages:/ifs/home/c2b2/rr_lab/avp2106/.local/lib/python2.7/site-packages/$PYTHONPATH
+# export PYTHONSTARTUP=~/.pystartup.py
 
 ### MATLAB
 PATH=$PATH:/nfs/apps/matlab/current/bin
@@ -96,7 +98,7 @@ export MATLABROOT=/nfs/apps/matlab/current
 export MATLABPATH=$scratch/scripts
 
 ### R
-PATH=$PATH:/ifs/scratch/c2b2/rr_lab/shares/R-3.0.0/bin
+PATH=$PATH:/nfs/apps/R/3.0.1/bin
 #PATH=$PATH:/nfs/apps/R/2.15.1/bin
 export R_HISTFILE=~/.Rhistory
 
@@ -111,7 +113,7 @@ PATH=$PATH:${shares}/bin
 PATH=$PATH:${shares}/bin/blat34
 PATH=$PATH:${shares}/bin/bowtie2-2.1.0
 #PATH=$PATH:${shares}/bin/velvet_1.2.03
-PATH=$PATH:${shares}/bin/bwa-0.5.9
+#PATH=$PATH:${shares}/bin/bwa-0.5.9
 #PATH=$PATH:${shares}/bin/abyss_program/bin
 #PATH=$PATH:${shares}/bin/trans-ABySS-v1.3.2/bin
 PATH=$PATH:${shares}/bin/FastQC
@@ -122,9 +124,9 @@ PATH=$PATH:${shares}/bin/cufflinks-2.1.1.Linux_x86_64
 PATH=$PATH:$sshares/bedtools/bin
 PATH=$PATH:$sshares/filo/bin
 PATH=$PATH:$sshares/samtools
-PATH=$PATH:$sshares/samtools/bcftools
+PATH=$PATH:$sshares/bcftools
 PATH=$PATH:$sshares/bowtie
-#PATH=$PATH:$sshares/bwa
+PATH=$PATH:$sshares/bwa
 PATH=$PATH:$sshares/tabix
 PATH=$PATH:$sshares/grabix
 PATH=$PATH:$sshares/picard/dist
@@ -163,9 +165,10 @@ function bgzip_tabix_vcf {
     done
 }
 
-alias mrab="ssh 156.145.28.76"
+# alias mrab="ssh 156.145.28.76"
 alias pt="perl -F'\t' -lane"
-alias js="j --stat" ###autojump
+alias wl="wc -l"
+# alias js="j --stat" ###autojump
 alias remake="make clean; make"
 function cur {
     curl $1 -o $(basename $1)
@@ -182,7 +185,8 @@ function ew {
 }
 alias matlab='$MATLABROOT/bin/matlab -singleCompThread -nodesktop -nosplash'
 alias b="e ~/.bashrc; exec bash"
-alias bk="cd -"
+alias ez="e /ifs/home/c2b2/rr_lab/avp2106/.zprezto/init.linux.zsh; exec /ifs/scratch/c2b2/rr_lab/shares/zsh/bin/zsh -l"
+#alias bk="cd -"
 function r {
     for i in $*; do 
 	echo -n $(readlink -e $i)" "
@@ -296,8 +300,8 @@ function qm {
 alias qsdel='cut -c1-7 | xargs qdel'
 alias qsj='cut -c1-7 | xargs -I{} qstat -j {}'
 
-alias sc='echo $DISPLAY>~/display.dat; screen -ADR main_screen'
-alias d='export DISPLAY=$(cat ~/display.dat)'
+alias sc='echo $DISPLAY >! ~/display.dat; screen -ADR main_screen'
+alias disp='export DISPLAY=$(cat ~/display.dat)'
 
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -387,6 +391,7 @@ export ref_bwa_transcriptome=$sshares/ref/hg19/bwa/transcriptome/transcriptome_f
 export ref_bowtie_transcriptome=$sshares/ref/hg19/bowtie2/transcriptome/transcriptome_fasta
 export ref_samtools_genome=$sshares/ref/hg19/samtools_faidx/hg19.fa
 export ref_ens_genome=$sshares/ref/hg19/Illumina_iGenome/Homo_sapiens/Ensembl/GRCh37/Sequence/BWAIndex/genome.fa
+export ref_ncbi_genome=$sshares/ref/hg19/Illumina_iGenome/Homo_sapiens/NCBI/build37.2/Sequence/BWAIndex/genome.fa
 export ref_blast_human=$sshares/ref/hg19/blast_plus/genome/db
 export ref_blast_nt=$sshares/ref/blastdb/nt/nt
 

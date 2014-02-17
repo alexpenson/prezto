@@ -23,6 +23,11 @@ elif [[ $(uname) == "Linux" ]]; then
 fi
 
 # Source Prezto.
+if [[ -s "$HOME/.zprezto/init.custom.zsh" ]]; then
+  source "$HOME/.zprezto/init.custom.zsh"
+fi
+
+# Source Prezto.
 if [[ -s "$HOME/.zprezto/init.zsh" ]]; then
   source "$HOME/.zprezto/init.zsh"
 fi
